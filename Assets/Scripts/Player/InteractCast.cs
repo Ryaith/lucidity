@@ -18,6 +18,8 @@ public class InteractCast : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI objName;
+    [SerializeField]
+    private TextMeshProUGUI actionName;
 
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class InteractCast : MonoBehaviour
             //to disable interactions for any purpose you can temporarily disable the raycast-detection collider
             selectedObj = hit.collider.gameObject.transform.parent.gameObject;
             IInteractable interactableObj = selectedObj.GetComponent<IInteractable>();
-            selectObject(interactableObj.getDisplayName());
+            selectObject(interactableObj.getDisplayName(), interactableObj.getActionName());
             if (Input.GetKeyDown(KeyCode.E))
             {
                 interactableObj.Activate();
@@ -42,14 +44,16 @@ public class InteractCast : MonoBehaviour
         else
         {
             deselectObject();
+            selectedObj = null;
         }
     }
 
 
-    private void selectObject(string displayName)
+    private void selectObject(string displayName, string action)
     {
         crosshair.color = Color.green;
         objName.text = displayName;
+        actionName.text = action;
     }
 
 
@@ -57,5 +61,6 @@ public class InteractCast : MonoBehaviour
     {
         crosshair.color = Color.white;
         objName.text = string.Empty;
+        actionName.text = string.Empty;
     }
 }

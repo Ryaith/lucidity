@@ -9,11 +9,13 @@ public class BasicInteraction : MonoBehaviour, IInteractable
 
     public string actionName;
 
+    [SerializeField] private bool state = true;
 
     public void Activate()
     {
         Debug.Log("Activated");
-        gameObject.SetActive(false);
+        ToggleState();
+        gameObject.SetActive(state);
     }
 
     public string getDisplayName()
@@ -24,5 +26,10 @@ public class BasicInteraction : MonoBehaviour, IInteractable
     public string getActionName()
     {
         return actionName;
+    }
+
+    private void ToggleState()
+    {
+        state = state ? false : true;
     }
 }
