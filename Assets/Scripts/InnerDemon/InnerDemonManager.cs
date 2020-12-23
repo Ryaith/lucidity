@@ -14,7 +14,6 @@ public class InnerDemonManager : MonoBehaviour
         transform.RotateAround(gameObject.transform.position, axis, angle);
     }
 
-
 }
 
 
