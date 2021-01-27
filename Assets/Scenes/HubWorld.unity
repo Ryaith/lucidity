@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1ac8d3d891b744a9562ac4d92b0c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: 1
+  destination: 2
   displayName: Portal
   actionName: 
 --- !u!1 &2062172223
