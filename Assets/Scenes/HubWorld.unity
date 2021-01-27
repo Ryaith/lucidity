@@ -153,22 +153,22 @@ PrefabInstance:
     - target: {fileID: 8952816247856629908, guid: b903f7220650cbf4d919fc653e9af9ab,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.70049435
       objectReference: {fileID: 0}
     - target: {fileID: 8952816247856629908, guid: b903f7220650cbf4d919fc653e9af9ab,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8952816247856629908, guid: b903f7220650cbf4d919fc653e9af9ab,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.71365803
       objectReference: {fileID: 0}
     - target: {fileID: 8952816247856629908, guid: b903f7220650cbf4d919fc653e9af9ab,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8952816247856629908, guid: b903f7220650cbf4d919fc653e9af9ab,
         type: 3}
@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 8952816247856629908, guid: b903f7220650cbf4d919fc653e9af9ab,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -91.067
       objectReference: {fileID: 0}
     - target: {fileID: 8952816247856629908, guid: b903f7220650cbf4d919fc653e9af9ab,
         type: 3}
@@ -828,7 +828,7 @@ GameObject:
   - component: {fileID: 1025680481}
   - component: {fileID: 1025680480}
   - component: {fileID: 1025680479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InteractionHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2895,9 +2895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: 1
-  displayName: Boss
+  displayName: Portal
   actionName: 
-  activationObject: {fileID: 1025680478}
 --- !u!1 &2062172223
 GameObject:
   m_ObjectHideFlags: 0
