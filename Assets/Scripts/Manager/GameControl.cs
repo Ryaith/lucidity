@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameControl : MonoBehaviour
 {
-    public static GameControl Instance; 
-    [SerializeField] private static int TC = 1; // total collectibles 
-    [SerializeField] private GameObject[] Pickups = new GameObject[TC]; // List of all the collectibles in the game 
-    [SerializeField] private bool[] Collected = new bool[TC]; // List of all collected items 
-    [SerializeField] private int Count;
-    [SerializeField] private Vector3 PlayerPosition;
+    public static GameControl Instance;  
+    public GameObject[] Pickups = new GameObject[TC]; // List of all the collectibles in the game 
+    public bool[] Collected = new bool[TC]; // List of all collected items 
+    public int Count;
+
+    [SerializeField] private static int TC = 1; // total collectibles
 
     /* inits the collectibles, renames each collectible to a simple integer, which can double as its array index value later on. 
     It then stores the GameObject in the 'Pickups' array, and resets the 'Collected' state to false */
@@ -25,7 +25,7 @@ public class GameControl : MonoBehaviour
             Destroy(gameObject);
         }
         var i = 0;
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pickup"))
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("InnerDemon"))
         {
             go.SetActive(true);
             print("Pickup " + i + " initialized");
@@ -40,7 +40,7 @@ public class GameControl : MonoBehaviour
     public void InitializeNR()
      {
          var i = 0;
-         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pick-up"))
+         foreach (GameObject go in GameObject.FindGameObjectsWithTag("InnerDemon"))
          {
              go.SetActive(true);
              print("Pickup " + i + " initialized");
