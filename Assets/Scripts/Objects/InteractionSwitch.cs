@@ -27,12 +27,12 @@ public class InteractionSwitch : MonoBehaviour, IInteractable
         return actionName;
     }
 
-    public void Activate()
+    public void Activate(GameObject Player)
     {
         foreach(GameObject obj in linkedObjects)
         {
             IInteractable interactionComp = obj.GetComponent<IInteractable>();
-            interactionComp.Activate();
+            interactionComp.Activate(Player);
         }
     }
 

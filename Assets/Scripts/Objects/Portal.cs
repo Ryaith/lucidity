@@ -16,7 +16,7 @@ public class Portal : MonoBehaviour, IInteractable {
         return actionName;
     }
 
-    public void Activate() {
+    public void Activate(GameObject player) {
         SceneManager.LoadScene(destination);
     }
 }

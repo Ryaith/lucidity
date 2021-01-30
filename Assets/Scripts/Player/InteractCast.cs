@@ -20,7 +20,8 @@ public class InteractCast : MonoBehaviour
     private TextMeshProUGUI objName;
     [SerializeField]
     private TextMeshProUGUI actionName;
-
+    
+    public GameObject playerParent;
 
     // Update is called once per frame
     void Update()
@@ -38,7 +39,7 @@ public class InteractCast : MonoBehaviour
             selectObject(interactableObj.getDisplayName(), interactableObj.getActionName());
             if (Input.GetKeyDown(KeyCode.E))
             {
-                interactableObj.Activate();
+                interactableObj.Activate(playerParent);
             }
         }
         else

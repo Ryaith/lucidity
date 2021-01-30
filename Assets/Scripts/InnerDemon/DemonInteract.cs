@@ -8,7 +8,7 @@ public class DemonInteract : MonoBehaviour, IInteractable
     [SerializeField] private string displayName = "";
     [SerializeField] private string actionName;
 
-    public void Activate(){
+    public void Activate(GameObject player){
         Destroy(gameObject);
         //SceneManager.LoadScene(0);
     }
