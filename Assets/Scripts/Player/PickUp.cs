@@ -9,14 +9,15 @@ public class PickUp : MonoBehaviour, IInteractable
     [SerializeField] private string actionName;
     private bool isInAir = false; 
 
-    public void Activate()
+    public void Activate(GameObject player)
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            GameObject dest = player.GetComponent<InteractionManager>().getHoldingDestObject();
             isInAir = true;
             GetComponent<Rigidbody>().useGravity = false;
-            this.transform.position = theDest.position;
-            this.transform.parent = GameObject.Find("Dest").transform;
+            this.transform.position = dest.transform.position;
+            this.transform.parent = dest.transform;
         } 
     }
 

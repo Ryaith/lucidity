@@ -11,6 +11,6 @@ public interface IInteractable
     //Name of the action to be performed (currently not used)
     string getActionName();
 
-     void Activate();
+     void Activate(GameObject player);
 
 }

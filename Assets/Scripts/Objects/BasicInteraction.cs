@@ -11,7 +11,7 @@ public class BasicInteraction : MonoBehaviour, IInteractable
 
     [SerializeField] private bool state = true;
 
-    public void Activate()
+    public void Activate(GameObject player)
     {
         Debug.Log("Activated");
         ToggleState();
