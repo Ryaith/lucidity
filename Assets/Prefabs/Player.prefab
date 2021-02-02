@@ -399,6 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdDest: {fileID: 1687442333}
+  messageBox: {fileID: 1363362814}
 --- !u!1 &8952816248347195600
 GameObject:
   m_ObjectHideFlags: 0
