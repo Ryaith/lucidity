@@ -18,7 +18,7 @@ public class Turret : MonoBehaviour
     Transform m_transform;
 
     GameObject newProjectile;
-    Projectile bulletCode;
+    protected Projectile bulletCode;
 
 
     // Start is called before the first frame update
@@ -43,7 +43,17 @@ public class Turret : MonoBehaviour
             if (timer >= shotDelay && !cooldown)
             {
                 timer -= shotDelay;
-                bulletCode.fire(m_transform.position);
+
+                //cringe but I couldn't get the child's fire method to trigger without this
+                if (bulletCode is GhostProjectile)
+                {
+                    ((GhostProjectile) bulletCode).fire(m_transform.position);
+                }
+                else
+                {
+                    bulletCode.fire(m_transform.position);
+                }
+                
 
                 newProjectile = Instantiate(projectile);
                 bulletCode = newProjectile.GetComponent<Projectile>();
