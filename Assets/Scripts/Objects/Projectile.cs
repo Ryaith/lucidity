@@ -6,11 +6,11 @@ public class Projectile : MonoBehaviour
 {
     public float maxSpeed = 0.15f;
     public float maxRange = 30f;
-    float bulletSpeed;
+    protected float bulletSpeed;
 
-    Vector3 origin;
-    Vector3 distance;
-    Rigidbody bullet;
+    protected Vector3 origin;
+    protected Vector3 distance;
+    protected Rigidbody bullet;
 
 
     // Start is called before the first frame update
@@ -30,7 +30,6 @@ public class Projectile : MonoBehaviour
         UnityEngine.Debug.DrawRay(origin, distance, Color.yellow);
 
         //Defines the max range of the bullet
-        //Too long and the player can't shoot often enough
         if (distance.magnitude > maxRange)
         {
             Destroy(gameObject);
@@ -44,8 +43,7 @@ public class Projectile : MonoBehaviour
         //We can implement another fire method that rotates the projectile if needed in the future
         origin = originPoint;
         bulletSpeed = maxSpeed;
-
-        bullet.transform.position = new Vector3(origin.x, 1, origin.z);
+        bullet.transform.position = new Vector3(origin.x, origin.y, origin.z);
     }
 
     //Hitboxes are triggers, and projectiles should be on the DAMAGE layer
