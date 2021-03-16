@@ -20,7 +20,7 @@ public class Switch : MonoBehaviour, IInteractable
     [SerializeField] private GameObject activationObject;
 
 
-    public void Activate(GameObject player)
+    public virtual void Activate(GameObject player)
     {
         bool isActive = activationObject.activeSelf;
         if (isActive)
