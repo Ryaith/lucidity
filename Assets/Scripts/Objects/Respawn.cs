@@ -18,4 +18,7 @@ public class Respawn : MonoBehaviour{
         player.transform.position = respawnPoint;
         Physics.SyncTransforms();
     }
+    public void setRespawn(Vector3 newDest) {
+        respawnPoint = newDest;
+				}
 }
