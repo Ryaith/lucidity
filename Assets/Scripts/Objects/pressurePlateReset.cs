@@ -13,5 +13,10 @@ public class pressurePlateReset : MonoBehaviour{
 								}
 								myManager.resetPlates();
 				}
+				public void goal() {
+								for (int i = 0; i < pressurePlateList.Count; i++) {
+												pressurePlateList[i].goal();
+								}
+				}
 
 }

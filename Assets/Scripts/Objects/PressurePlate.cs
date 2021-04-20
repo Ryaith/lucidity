@@ -8,10 +8,12 @@ public class PressurePlate : MonoBehaviour{
 				[SerializeField] private int activeTime;
 				
 				private bool activated = false;
-				private Color red = new Color(100, 0, 0);
-				private Color blue = new Color(0, 0, 100);
+				public Color red = new Color(100, 0, 0);
+				public Color blue = new Color(0, 0, 100);
+				public Color gold = new Color(241, 107, 47);
 				private Material myMaterial;
 				private int myId = 0;
+				private bool win = false;
 				private void Awake() {
 								myMaterial = self.GetComponent<Renderer>().material;
 								myMaterial.color = blue;
@@ -24,6 +26,11 @@ public class PressurePlate : MonoBehaviour{
 								}
 
 				}
+				public void goal() {
+								win = true;
+								setPlateActive();
+								myMaterial.color = gold;
+				}
 				public void setPlateActive() {
 								activated = true;
 								myManager.setPlateActive();
@@ -31,9 +38,12 @@ public class PressurePlate : MonoBehaviour{
 								StartCoroutine(myTimer(myId));
 				}
 				public void setPlateInactive() {
-								activated = false;
-								myManager.setPlateInactive();
-								myMaterial.color = blue;
+								if (!win) {
+												activated = false;
+												myManager.setPlateInactive();
+												myMaterial.color = blue;
+								}
+								
 				}
 				private void OnTriggerEnter(Collider other) {
 								myId++;
