@@ -20,24 +20,28 @@ public class PressurePlate : MonoBehaviour{
 								
 								yield return new WaitForSeconds(activeTime);
 								if (activated && id==myId) {
-												activated = false;
-												myManager.setPlateInactive();
-												myMaterial.color = blue;
+												setPlateInactive();
 								}
 
+				}
+				public void setPlateActive() {
+								activated = true;
+								myManager.setPlateActive();
+								myMaterial.color = red;
+								StartCoroutine(myTimer(myId));
+				}
+				public void setPlateInactive() {
+								activated = false;
+								myManager.setPlateInactive();
+								myMaterial.color = blue;
 				}
 				private void OnTriggerEnter(Collider other) {
 								myId++;
 								if (activated) {
-												activated = false;
-												myManager.setPlateInactive();
-												myMaterial.color = blue;
+												setPlateInactive();
 								}
 								else {
-												activated = true;
-												myManager.setPlateActive();
-												myMaterial.color = red;
-												StartCoroutine(myTimer(myId));
+												setPlateActive();
 												
 								}
 				}

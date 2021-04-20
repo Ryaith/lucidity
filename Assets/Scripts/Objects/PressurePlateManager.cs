@@ -16,4 +16,7 @@ public class PressurePlateManager : MonoBehaviour{
     public void setPlateInactive() {
         platesActive--;
 				}
+    public void resetPlates() {
+        platesActive = 0;
+				}
 }
