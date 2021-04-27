@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour, IInteractable
+public class PickUp2 : MonoBehaviour, IInteractable
 {   
     [SerializeField] private Transform theDest;
     [SerializeField] private string displayName = "";
