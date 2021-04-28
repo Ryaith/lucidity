@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     protected float bulletSpeed;
 
     protected Vector3 origin;
-    protected Vector3 distance;
+    protected float distance;
     protected Rigidbody bullet;
 
 
@@ -22,15 +22,14 @@ public class Projectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         bullet.MovePosition(bullet.position + bullet.transform.forward * bulletSpeed);
-        distance = bullet.position - origin;
-        UnityEngine.Debug.DrawRay(origin, distance, Color.yellow);
+        distance = Vector3.Distance(origin, bullet.position);
 
         //Defines the max range of the bullet
-        if (distance.magnitude > maxRange)
+        if (distance > maxRange)
         {
             Destroy(gameObject);
         }
@@ -41,9 +40,9 @@ public class Projectile : MonoBehaviour
         //Fires the projectile forwards from the given position
         //Make sure the projectile is rotated correctly
         //We can implement another fire method that rotates the projectile if needed in the future
+        bullet.transform.position = new Vector3(originPoint.x, originPoint.y, originPoint.z);
         origin = originPoint;
         bulletSpeed = maxSpeed;
-        bullet.transform.position = new Vector3(origin.x, origin.y, origin.z);
     }
 
     //Hitboxes are triggers, and projectiles should be on the DAMAGE layer

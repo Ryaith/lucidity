@@ -55,7 +55,7 @@ public class Turret : MonoBehaviour
                 }
                 
 
-                newProjectile = Instantiate(projectile);
+                newProjectile = Instantiate(projectile, projectile.transform.position, projectile.transform.rotation);
                 bulletCode = newProjectile.GetComponent<Projectile>();
                 sequenceCount += 1;
                 if (sequenceCount == shotCount)
