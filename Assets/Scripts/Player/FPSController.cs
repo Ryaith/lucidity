@@ -18,13 +18,15 @@ public class FPSController : PortalTraveller
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
-
+    GravityBody gravityBodyScript;
+    bool scriptDisabled = true;
     [HideInInspector]
     public bool canMove = true;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        gravityBodyScript = GetComponent<GravityBody>();
         yaw = transform.eulerAngles.y;
         smoothYaw = yaw;
         // Lock cursor
@@ -84,6 +86,20 @@ public class FPSController : PortalTraveller
         transform.eulerAngles = Vector3.up * smoothYaw;
         velocity = toPortal.TransformVector (fromPortal.InverseTransformVector (velocity));
         Physics.SyncTransforms ();
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if (other.tag == "PlanetPuzzle" && scriptDisabled)
+        {
+            gravityBodyScript.enabled = true;
+            scriptDisabled = false;
+        }
+        if (other.tag == "SetGravityBack" && !scriptDisabled)
+        {
+            gravityBodyScript.enabled = false;
+            scriptDisabled = true;
+        }
     }
 }
 
