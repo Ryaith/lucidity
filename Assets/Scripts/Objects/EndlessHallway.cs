@@ -41,6 +41,7 @@ public class EndlessHallway : MonoBehaviour
         playerTransform = player.GetComponent<Transform>();
         playerController = player.GetComponent<CharacterController>();
 
+        //Swap max and min if this experiment doesn't work
         if (!invertDirection)
         {
             entryPoint = m_Collider.bounds.min;
@@ -53,12 +54,6 @@ public class EndlessHallway : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerExit()
     {
         Vector3 playerPosition = playerTransform.position;
@@ -66,7 +61,6 @@ public class EndlessHallway : MonoBehaviour
         UnityEngine.Debug.Log(Vector3.Angle(forward, playerTransform.forward));
 
         //Comparisons done in multiple steps to avoid overcomplicating the single if statement
-        //I want the rest of you to be able to read this and there's no need to nest if statements
 
         bool exitingLimitingSide;
         Vector3 newPosition;

@@ -13,7 +13,7 @@ public class GhostProjectile : Projectile
     //Up = 1, down = -1
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         bullet.MovePosition(bullet.position + bullet.transform.forward * bulletSpeed + Vector3.up * (float)Math.Cos(x) * activeVertSpeed);
         x += Time.deltaTime / 2;
@@ -23,10 +23,10 @@ public class GhostProjectile : Projectile
         {
             x -= 1000;
         }
-        distance = bullet.position - origin;
+        distance = Vector3.Distance(bullet.position, origin);
 
         //Defines the max range of the bullet
-        if (distance.magnitude > maxRange)
+        if (distance > maxRange)
         {
             if (!reusable)
             {
