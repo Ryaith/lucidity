@@ -15,5 +15,6 @@ public class NightmareBossSwitch : Switch
     public override void Activate(GameObject player)
     {
         boss.hit(switchid);
+        Destroy(gameObject);
     }
 }
