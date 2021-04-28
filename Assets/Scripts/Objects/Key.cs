@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyeOfTruth : MonoBehaviour, IInteractable {
-    
-    [SerializeField] private List<GameObject> invisibleObject;
-    [SerializeField] private string displayName = "Eye of Truth";
+public class Key : MonoBehaviour, IInteractable {
+
+    [SerializeField] private string displayName = "Key";
     [SerializeField] private string actionName;
-    
+    public DoorManager myManager;
     public string getDisplayName() {
         return displayName;
     }
@@ -17,10 +16,7 @@ public class EyeOfTruth : MonoBehaviour, IInteractable {
     }
 
     public void Activate(GameObject Player) {
+        myManager.increment();
         this.gameObject.SetActive(false);
-        for (int i = 0; i < invisibleObject.Count; i++) {
-            invisibleObject[i].GetComponent<MeshRenderer>().enabled = true;
-        }
-
     }
 }
