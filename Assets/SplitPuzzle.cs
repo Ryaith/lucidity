@@ -14,7 +14,7 @@ public class SplitPuzzle : MonoBehaviour
 
         if (collision.gameObject.tag == "Player" && sprite1.activeSelf == true)
         {
-            if (collision.gameObject.transform.rotation.y > -0.90 && collision.gameObject.transform.rotation.y < -0.60)
+            if (collision.gameObject.transform.rotation.y > -0.95 && collision.gameObject.transform.rotation.y < -0.55)
                 StartCoroutine(ExampleCoroutine());
         }
     }
