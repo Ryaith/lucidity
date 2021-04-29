@@ -7,6 +7,8 @@ using TMPro;
 public class InteractCast : MonoBehaviour
 {
 
+    public bool CastEnabled = true;
+
     private GameObject selectedObj;
     [SerializeField]
     private LayerMask interactionLayer;
@@ -26,27 +28,29 @@ public class InteractCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        if (CastEnabled)
+        {
+            RaycastHit hit;
+            Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-        if(Physics.Raycast(transform.position, fwd, out hit, maxInteractionDist, interactionLayer.value))
-        {
-            //Rigidbodies work weirdly with raycasts. The collider size needs to icnrease for rigidbodies to work.
-            //It's why I decided to use 2 different colliders, one for collisions and one for raycast detection
-            //to disable interactions for any purpose you can temporarily disable the raycast-detection collider
-            selectedObj = hit.collider.gameObject.transform.parent.gameObject;
-            IInteractable interactableObj = selectedObj.GetComponent<IInteractable>();
-            
-            selectObject(interactableObj.getDisplayName(), interactableObj.getActionName());
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Physics.Raycast(transform.position, fwd, out hit, maxInteractionDist, interactionLayer.value))
             {
-                interactableObj.Activate(playerParent);
+                //Rigidbodies work weirdly with raycasts. The collider size needs to icnrease for rigidbodies to work.
+                //It's why I decided to use 2 different colliders, one for collisions and one for raycast detection
+                //to disable interactions for any purpose you can temporarily disable the raycast-detection collider
+                selectedObj = hit.collider.gameObject.transform.parent.gameObject;
+                IInteractable interactableObj = selectedObj.GetComponent<IInteractable>();
+                selectObject(interactableObj.getDisplayName(), interactableObj.getActionName());
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    interactableObj.Activate(playerParent);
+                }
             }
-        }
-        else
-        {
-            deselectObject();
-            selectedObj = null;
+            else
+            {
+                deselectObject();
+                selectedObj = null;
+            }
         }
     }
 
