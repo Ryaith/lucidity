@@ -11,9 +11,20 @@ public class DoorManager : MonoBehaviour{
         numKeys += 1;
         if(currentBarrier<keysNeeded.Count){
 								    if (keysNeeded[currentBarrier] <= numKeys) {
-                barriers[currentBarrier].SetActive(false);
+                barriers[currentBarrier].GetComponent<Animator>().SetTrigger("openDoor");
                 currentBarrier += 1;
 								    }
         }
+				}
+    public int remaining() {
+        if (currentBarrier > 0)
+        {
+          return 0;
+        }
+        else
+        {
+          return keysNeeded[currentBarrier] - numKeys;
+        }
+        
 				}
 }
