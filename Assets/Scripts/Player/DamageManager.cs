@@ -14,6 +14,8 @@ public class DamageManager : MonoBehaviour
 
     CharacterController playerController;
     string thisScene;
+    Respawn respawnObject;
+    AudioSource[] damageSounds;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,8 @@ public class DamageManager : MonoBehaviour
         deathTimer = 0f;
         playerController = GetComponent<CharacterController>();
         thisScene = SceneManager.GetActiveScene().name;
+        respawnObject = GameObject.Find("RespawnManager").GetComponent<Respawn>();
+        damageSounds = GetComponentsInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,7 +48,12 @@ public class DamageManager : MonoBehaviour
             deathTimer += Time.deltaTime;
             if (deathTimer >= 5f)
             {
-                SceneManager.LoadScene(thisScene);
+                //SceneManager.LoadScene(thisScene);
+                playerController.enabled = true;
+                hit = false;
+                dead = false;
+                respawnObject.respawn();
+                deathTimer = 0;
             }
         }
 
@@ -63,12 +72,18 @@ public class DamageManager : MonoBehaviour
             if (hit)
             {
                 playerController.enabled = false; //Probably a more elegant solution to disable control while dead
+                if (!dead)
+                {
+                    damageSounds[1].Play();
+                }
                 dead = true;
+                
             }
             else
             {
                 hit = true;
                 healTimer = 10f;
+                damageSounds[0].Play();
             }
             damageCD = 2f;
         }
