@@ -36,6 +36,9 @@ public class InteractCast : MonoBehaviour
             //to disable interactions for any purpose you can temporarily disable the raycast-detection collider
             selectedObj = hit.collider.gameObject.transform.parent.gameObject;
             IInteractable interactableObj = selectedObj.GetComponent<IInteractable>();
+            if (interactableObj == null) {
+                print("is null");
+												}
             selectObject(interactableObj.getDisplayName(), interactableObj.getActionName());
             if (Input.GetKeyDown(KeyCode.E))
             {
