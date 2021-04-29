@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e41812723cdf254691a9555111094a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: InnerDemon
+  displayName: Inner Demon
   actionName: Collect
 --- !u!33 &4188577654639178779
 MeshFilter:
