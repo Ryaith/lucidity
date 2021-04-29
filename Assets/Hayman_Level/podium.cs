@@ -7,7 +7,7 @@ public class podium : MonoBehaviour, IInteractable {
     [SerializeField] private string actionName;
     public DoorManager myManager;
 				
-				public string getDisplayName() {
+		public string getDisplayName() {
         displayName = "You have " + myManager.remaining() + " keys remaining";
         return displayName;
     }

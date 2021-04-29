@@ -17,6 +17,14 @@ public class DoorManager : MonoBehaviour{
         }
 				}
     public int remaining() {
-        return keysNeeded[currentBarrier] - numKeys;
+        if (keysNeeded[currentBarrier] <= 0)
+        {
+          return 0;
+        }
+        else
+        {
+          return keysNeeded[currentBarrier] - numKeys;
+        }
+        
 				}
 }
