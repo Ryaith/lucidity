@@ -9,6 +9,8 @@ public class NightmareBossManager : MonoBehaviour
 
     [SerializeField] private int numSwitches;
     bool[] hits;
+    [SerializeField] private GameObject bossObject;
+    AudioSource bossVoice;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class NightmareBossManager : MonoBehaviour
         innerDemon = GetComponentInChildren<InnerDemonManager>().gameObject;
         innerDemon.SetActive(false);
         hits = new bool[numSwitches];
+        bossVoice = GetComponentInChildren<AudioSource>();
     }
 
     public void hit(int switchid)
@@ -34,6 +37,8 @@ public class NightmareBossManager : MonoBehaviour
         {
             boss.enabled = false;
             innerDemon.SetActive(true);
+            bossObject.SetActive(false);
+            bossVoice.Play();
         }
     }
 }
