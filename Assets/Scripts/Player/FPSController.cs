@@ -101,5 +101,17 @@ public class FPSController : PortalTraveller
             scriptDisabled = true;
         }
     }
+
+    public void lockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void unlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 }
 
