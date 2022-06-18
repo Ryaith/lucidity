@@ -1,3 +1,5 @@
+Updated and simplified version for web browsers playable here: https://ryaith.itch.io/lucidity-browser-version
+
 For this submission, we have implemented the following:
 • Boss aggro mechanics, allowing us to dynamically start and stop boss fights
 • Interaction mechanics, allowing the user to interact with various objects.
